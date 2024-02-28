@@ -1,7 +1,7 @@
 ## Introduction:
 
-This is a simple application that makers it possible to perfomr secret santa between friends. It is still a wrok in progress. 
-- Architectrue:
-    -> Backend: Flask
-    -> Front: React
+This is a simple application that makes it possible to perform secret Santa between friends. It is still a work in progress. 
+- Architecture:
+    -> Backend: Flask \n
+    -> Front: React  \n
     -> Db: Postgres

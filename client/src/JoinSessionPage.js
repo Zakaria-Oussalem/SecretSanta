@@ -4,37 +4,42 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 
-function CreateSessionPage() {
+function JoinSessionPage() {
   const [username, setUsername] = useState("");
+  const [session_id, setSession] = useState("");
 
   const navigate = useNavigate();
+  const navigateToSessionPage = () => {
+    navigate(`/sessionPage/${username}/${session_id}`);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(`${"http://127.0.0.1:5000"}/user`, {
-        username: username,
-        role: "admin",
-        session: "",
+        username,
+        role: "user",
+        session_id,
       });
-      const session_id = data.session;
       console.log(username);
       console.log(session_id);
-      navigate(`/sessionPage/${username}/${session_id}`);
+      navigateToSessionPage();
     } catch (err) {
       console.log(err);
     }
   };
+
   useEffect(() => {}, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <div className="title-box">
-          <h1>Secret Santa - Session Creation</h1>
+          <h1>Secret Santa - Join Session</h1>
         </div>
         {/* a box h2 title saying Number of players and the entry below it and a submit button on the side * */}
         <div className="small-box">
-          <h3>Choose your name</h3>
+          <h3>Submit your name and the session Id</h3>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="submitForm">
@@ -46,6 +51,14 @@ function CreateSessionPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
+            <label htmlFor="players">Session ID</label>
+            <input
+              type="text"
+              name="session ID"
+              id="session_id"
+              value={session_id}
+              onChange={(e) => setSession(e.target.value)}
+            />
             <button type="submit" className="button" onClick={handleSubmit}>
               Submit
             </button>
@@ -56,4 +69,4 @@ function CreateSessionPage() {
   );
 }
 
-export default CreateSessionPage;
+export default JoinSessionPage;

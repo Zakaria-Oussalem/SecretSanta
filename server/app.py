@@ -1,3 +1,4 @@
+from enum import Enum
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -13,6 +14,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = (
 )
 
 db = SQLAlchemy(app)
+# CORS
+CORS(app)
 
 
 class User(db.Model):
@@ -40,7 +43,7 @@ def hello():
 def create_user():
     username = request.json["username"]
     role = request.json["role"]
-    session = request.json.get("session", None)
+    session = request.json.get("session_id", None)
     if User.query.filter_by(username=username).first():
         return {"error": "Username already exists"}
     if role not in ["admin", "user"]:
@@ -64,6 +67,19 @@ def get_users():
     users = list(
         map(
             lambda x: {"username": x.username, "role": x.role, "session": x.session},
+            users,
+        )
+    )
+    return {"users": users}
+
+
+# get all users by session
+@app.route("/session/<session_id>", methods=["GET"])
+def get_users_session(session_id):
+    users = User.query.filter_by(session=session_id).all()
+    users = list(
+        map(
+            lambda x: {"username": x.username},
             users,
         )
     )

@@ -1,33 +1,20 @@
-import { useEffect, useRef } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomePage from "./homePage";
 import CreateSessionPage from "./CreateSessionPage";
+import JoinSessionPage from "./JoinSessionPage";
+import SessionPage from "./sessionPage";
 
 function App() {
-  const navigate = useNavigate();
-
-  const navigateToCreateSession = () => {
-    // 👇️ navigate to /contacts
-    navigate("/CreateSessionPage");
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="title-box">
-          <h1>WELCOME TO SECRET SANTA</h1>
-        </div>
-        <div className="button-container">
-          <button className="button" onClick={navigateToCreateSession}>
-            Create a session
-          </button>
-          <button className="button">Join a session</button>
-        </div>
-        <Routes>
-          <Route path="/CreateSessionPage" element={<CreateSessionPage />} />
-        </Routes>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/CreateSessionPage" element={<CreateSessionPage />} />
+      <Route path="/JoinSessionPage" element={<JoinSessionPage />} />
+      <Route
+        path="/sessionPage/:username/:session_id"
+        element={<SessionPage />}
+      />
+      <Route path="*" element={<HomePage />} />{" "}
+    </Routes>
   );
 }
 

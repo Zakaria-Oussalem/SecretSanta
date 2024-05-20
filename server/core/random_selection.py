@@ -18,10 +18,6 @@ def selection(users_ids: list) -> dict:
                     It matches users together.
     """
 
-    # make sure the number of users is pair:
-    if len(users_ids) % 2 != 0:
-        raise ValueError(ERROR_ODD_LIST_COUNT)
-
     # make sure the list is not empty:
     if len(users_ids) == 0:
         raise ValueError(ERROR_EMPTY_USERS_LIST)
@@ -38,4 +34,4 @@ def selection(users_ids: list) -> dict:
 
 
 if __name__ == "__main__":
-    print(selection([111, 222, 333, 444, 555, 666]))
+    print(selection([111, 222, 333]))

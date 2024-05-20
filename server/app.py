@@ -79,7 +79,12 @@ def get_users_session(session_id):
     users = User.query.filter_by(session=session_id).all()
     users = list(
         map(
-            lambda x: {"username": x.username},
+            lambda x: {
+                "id": x.id,
+                "username": x.username,
+                "role": x.role,
+                "attributed": x.attributed,
+            },
             users,
         )
     )
@@ -90,7 +95,13 @@ def get_users_session(session_id):
 @app.route("/users/<id>", methods=["GET"])
 def get_user(id):
     user = User.query.get(id)
-    return {"username": user.username, "role": user.role, "session": user.session}
+    return {
+        "id": user.id,
+        "username": user.username,
+        "role": user.role,
+        "session": user.session,
+        "attributed": user.attributed,
+    }
 
 
 # delete a user by id
@@ -130,7 +141,7 @@ def launch():
 @app.route("/attributed/<id>", methods=["GET"])
 def get_attributed(id):
     user = User.query.get(id)
-    return {"attributed": user.attributed}
+    return {"attributed": user.attributed, "username": user.username}
 
 
 if __name__ == "__main__":

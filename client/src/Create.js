@@ -20,7 +20,7 @@ function CreateSessionPage() {
       const session_id = data.session;
       console.log(username);
       console.log(session_id);
-      navigate(`/sessionPage/${username}/${session_id}`);
+      navigate(`/session/${username}/${session_id}`);
     } catch (err) {
       console.log(err);
     }

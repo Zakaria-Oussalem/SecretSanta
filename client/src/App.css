@@ -43,7 +43,7 @@ input, button {
 .title-box {
   border: 2px solid #000; /* Change the color as needed */
   padding: 20px;
-  margin: -600px 20px 20px 20px; /* Adjust the first value as needed */
+  margin: 20px 20px 20px 20px; /* Adjust the first value as needed */
   border-radius: 40px; /* Adjust as needed */
   background: linear-gradient(45deg, #ff0000, #800000); /* Metallic red effect */
 }
@@ -101,3 +101,4 @@ input, button {
   padding: 10px; /* Increase this value to make the input field bigger */
   width: 100%; /* Make the input field take up the full width of its container */
 }
+

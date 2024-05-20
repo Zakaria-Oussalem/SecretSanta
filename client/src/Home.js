@@ -5,11 +5,11 @@ function HomePage() {
   const navigate = useNavigate();
 
   const navigateToCreateSession = () => {
-    navigate("/CreateSessionPage");
+    navigate("/create");
   };
 
   const navigateToJoinSession = () => {
-    navigate("/JoinSessionPage");
+    navigate("/join");
   };
 
   return (

@@ -10,13 +10,13 @@ function JoinSessionPage() {
 
   const navigate = useNavigate();
   const navigateToSessionPage = () => {
-    navigate(`/sessionPage/${username}/${session_id}`);
+    navigate(`/session/${username}/${session_id}`);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`${"http://127.0.0.1:5000"}/user`, {
+      await axios.post(`${"http://127.0.0.1:5000"}/user`, {
         username,
         role: "user",
         session_id,

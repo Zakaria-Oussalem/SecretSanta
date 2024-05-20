@@ -1,17 +1,19 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./homePage";
-import CreateSessionPage from "./CreateSessionPage";
-import JoinSessionPage from "./JoinSessionPage";
-import SessionPage from "./sessionPage";
+import HomePage from "./Home";
+import CreateSessionPage from "./Create";
+import JoinSessionPage from "./Join";
+import SessionPage from "./Session";
+import AttributionPage from "./Attribution";
 
 function App() {
   return (
     <Routes>
-      <Route path="/CreateSessionPage" element={<CreateSessionPage />} />
-      <Route path="/JoinSessionPage" element={<JoinSessionPage />} />
+      <Route path="/create" element={<CreateSessionPage />} />
+      <Route path="/join" element={<JoinSessionPage />} />
+      <Route path="/session/:username/:session_id" element={<SessionPage />} />
       <Route
-        path="/sessionPage/:username/:session_id"
-        element={<SessionPage />}
+        path="/attribution/:user_id/:session_id"
+        element={<AttributionPage />}
       />
       <Route path="*" element={<HomePage />} />{" "}
     </Routes>

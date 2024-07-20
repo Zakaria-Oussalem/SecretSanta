@@ -31,7 +31,3 @@ def selection(users_ids: list) -> dict:
         random.shuffle(shuffeled_ids)
         if all(original != shuffeled_ids[i] for i, original in enumerate(users_ids)):
             return dict(zip(users_ids, shuffeled_ids))
-
-
-if __name__ == "__main__":
-    print(selection([111, 222, 333]))

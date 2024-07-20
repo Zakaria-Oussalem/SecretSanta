@@ -1,35 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./App.css";
+import "./join.css";
 
 function JoinSessionPage() {
   const [username, setUsername] = useState("");
   const [session_id, setSession] = useState("");
-
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-  const navigateToSessionPage = () => {
-    navigate(`/session/${username}/${session_id}`);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(""); // Reset error message before submitting
     try {
-      await axios.post(`${"http://127.0.0.1:5000"}/user`, {
-        username,
+      console.log("Submitting: ", { username, session_id }); // Debugging line
+      await axios.post("http://127.0.0.1:5000/user", {
+        username: username,
         role: "user",
-        session_id,
+        session_id: session_id,
       });
-      console.log(username);
-      console.log(session_id);
-      navigateToSessionPage();
+      console.log("Username:", username);
+      console.log("Session ID:", session_id);
+      navigate(`/session/${username}/${session_id}`);
     } catch (err) {
-      console.log(err);
+      console.error("Error joining session:", err);
+      setError(
+        "Failed to join session. Please check the session ID and try again."
+      );
     }
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div className="App">
@@ -37,32 +36,32 @@ function JoinSessionPage() {
         <div className="title-box">
           <h1>Secret Santa - Join Session</h1>
         </div>
-        {/* a box h2 title saying Number of players and the entry below it and a submit button on the side * */}
         <div className="small-box">
-          <h3>Submit your name and the session Id</h3>
+          <h3>Submit your name and the session ID</h3>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="submitForm">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <label htmlFor="players">Session ID</label>
-            <input
-              type="text"
-              name="session ID"
-              id="session_id"
-              value={session_id}
-              onChange={(e) => setSession(e.target.value)}
-            />
-            <button type="submit" className="button" onClick={handleSubmit}>
-              Submit
-            </button>
-          </div>
+        {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleSubmit} className="submitForm">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <label htmlFor="session_id">Session ID</label>
+          <input
+            type="text"
+            name="session_id"
+            id="session_id"
+            value={session_id}
+            onChange={(e) => setSession(e.target.value)}
+            required
+          />
+          <button type="submit" className="button">
+            Submit
+          </button>
         </form>
       </header>
     </div>

@@ -1,0 +1,95 @@
+/* General App Styles */
+.App {
+    text-align: center;
+    background: linear-gradient(135deg, #283c86, #45a247); /* New background gradient */
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Header Styles */
+  .App-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  /* Title Box Styles */
+  .title-box {
+    border: 2px solid #ffffff; /* White border for better contrast */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px; /* More subtle border radius */
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Vibrant gradient */
+    color: white; /* Ensure text color is readable on the background */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a stronger shadow */
+    animation: glow 1.5s infinite alternate; /* Add a glow animation */
+  }
+  
+  /* Small Box Styles */
+  .small-box {
+    margin: 20px;
+    font-size: 24px;
+  }
+  
+  /* Form Styles */
+  .submitForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .submitForm label {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .submitForm input {
+    font-size: 20px;
+    padding: 10px;
+    width: 300px; /* Set a fixed width for the input */
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid #007BFF; /* Blue border */
+    outline: none;
+  }
+  
+  .submitForm input:focus {
+    border-color: #0056b3; /* Darker blue on focus */
+  }
+  
+  /* Button Styles */
+  .button {
+    background-color: transparent;
+    border: 2px solid #ffffff; /* White border for buttons */
+    color: white;
+    padding: 15px 30px; /* Adjusted padding for better proportions */
+    font-size: 18px; /* Slightly smaller font size */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 10px; /* Subtle border radius */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  .button:hover {
+    background-color: #ffffff; /* White background on hover */
+    color: #007BFF; /* Blue text on hover */
+    transform: translateY(-3px); /* Slight upward movement on hover */
+  }
+  
+  /* Error Message Styles */
+  .error-message {
+    color: #ff4c4c; /* Red color for error messages */
+    margin-bottom: 20px;
+  }
+  

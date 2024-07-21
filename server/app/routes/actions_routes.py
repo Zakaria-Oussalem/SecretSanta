@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.database import get_db
-from core.random_selection import selection
+from app.core.random_selection import selection
 from app.models import User
 
 router = APIRouter(prefix="/launch", tags=["secret_santa"])

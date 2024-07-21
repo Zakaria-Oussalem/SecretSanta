@@ -1,5 +1,5 @@
 import random
-from core.config import (
+from app.core.config import (
     ERROR_ODD_LIST_COUNT,
     ERROR_EMPTY_USERS_LIST,
     ERROR_USERS_LIST_DUPLICATS,

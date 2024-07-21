@@ -1,20 +1,26 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.database import engine, Base
-from app.routes import user_routes, session_routes, actions_routes
+from .database import engine, Base
+from .routes import user_routes, session_routes, actions_routes
+from .config import settings
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv("../.env")
 
 app = FastAPI()
 
 # Database initialization
 Base.metadata.create_all(bind=engine)
 
+origins = [
+    os.getenv("FRONTEND_URL"),
+]
+
 # CORS setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -4,10 +4,13 @@ from app.schemas import UserCreate
 
 
 def create_user(db: Session, user: UserCreate):
-    if db.query(User).filter(User.username == user.username).first():
-        return {"error": "Username already exists"}
+    if (
+        user.session_id
+        and not db.query(User).filter(User.session == user.session_id).first()
+    ):
+        raise Exception("Invalid session ID")
     if user.role not in ["admin", "user"]:
-        return {"error": "Invalid role"}
+        raise Exception("Invalid role")
     session_id = user.session_id or generate_unique_session_id(db)
     new_user = User(username=user.username, role=user.role, session=session_id)
     db.add(new_user)

@@ -1,0 +1,232 @@
+/* General App Styles */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Input and Button Styles */
+input,
+button {
+  display: block;
+  margin: 8px 0;
+}
+
+.App {
+  text-align: center;
+  background: linear-gradient(135deg, #283c86, #45a247);
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+/* Header Styles */
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+/* Title Box Styles */
+.title-box {
+  border: 2px solid #ffffff; /* White border for better contrast */
+  padding: 10px;
+  padding-left: 80px;
+  padding-right: 80px;
+  margin: 20px;
+  border-radius: 20px; /* More subtle border radius */
+  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Vibrant gradient */
+  color: white; /* Ensure text color is readable on the background */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add a stronger shadow */
+  animation: glow 1.5s infinite alternate; /* Add a glow animation */
+}
+
+/* Button Container Styles */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Button Styles */
+.button {
+  background-color: #007bff;
+  border: 0.1px solid #8a8888; /* White border for buttons */
+  color: white;
+  padding: 15px 30px; /* Adjusted padding for better proportions */
+  font-size: 18px; /* Slightly smaller font size */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px; /* Subtle border radius */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.button:hover {
+  background-color: #ffffff; /* White background on hover */
+  color: #80868b; /* Blue text on hover */
+  transform: translateY(-3px); /* Slight upward movement on hover */
+}
+
+/* Input Container Styles */
+.input-container input {
+  font-size: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+/* Form Container Styles */
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Submit Button Styles */
+.Submitbutton {
+  margin-top: 20px;
+}
+
+/* Submit Form Styles */
+.submitForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+/* Input Styles */
+#username,
+#players {
+  font-size: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+/* Keyframes for Glow Animation */
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px #feb47b, 0 0 20px #ff7e5f, 0 0 30px #ff7e5f, 0 0 40px #feb47b, 0 0 50px #ff7e5f, 0 0 60px #feb47b, 0 0 70px #ff7e5f;
+  }
+  to {
+    box-shadow: 0 0 20px #ff7e5f, 0 0 30px #feb47b, 0 0 40px #ff7e5f, 0 0 50px #feb47b, 0 0 60px #ff7e5f, 0 0 70px #feb47b, 0 0 80px #ff7e5f;
+  }
+}
+
+
+  /* Small Box Styles */
+  .small-box {
+    margin: 20px;
+    font-size: 24px;
+    width: 30ch;
+  }
+  
+  /* Form Styles */
+  .submitForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .submitForm label {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .submitForm input {
+    font-size: 20px;
+    padding: 10px;
+    width: 300px; /* Set a fixed width for the input */
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid #007BFF; /* Blue border */
+    outline: none;
+  }
+  
+  .submitForm input:focus {
+    border-color: #0056b3; /* Darker blue on focus */
+  }
+
+
+  .spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .spinner {
+    border: 8px solid rgba(255, 255, 255, 0.2);
+    border-top: 8px solid #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .invite-message {
+    margin: 20px;
+    font-size: 18px;
+    width: 30ch;
+    color: #ffffff;
+  }
+  
+  /* Info Box Styles */
+  .info-box {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  /* Players List Styles */
+  .players-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .players-list li {
+    margin: 10px 0;
+  }
+  
+  .player-role {
+    font-weight: bold;
+    color: #feb47b;
+  }

@@ -27,3 +27,10 @@ class SessionResponse(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class LaunchSession(BaseModel):
+    session: int
+
+    class Config:
+        orm_mode = True

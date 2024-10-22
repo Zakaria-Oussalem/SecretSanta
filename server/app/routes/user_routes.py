@@ -13,7 +13,7 @@ from app.services import (
 router = APIRouter(prefix="/users", tags=["users"])
 
 
-@router.post("/", response_model=UserResponse)
+@router.post("/create", response_model=UserResponse)
 def create_user_endpoint(user: UserCreate, db: Session = Depends(get_db)):
     return create_user(db, user)
 

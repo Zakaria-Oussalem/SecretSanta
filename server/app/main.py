@@ -6,8 +6,8 @@ from .routes import user_routes, session_routes, actions_routes
 from .config import settings
 from dotenv import load_dotenv
 
-load_dotenv("../.env")
-
+load_dotenv("./.env")
+print(os.getenv("FRONTEND_URL"))
 app = FastAPI()
 
 # Database initialization

@@ -3,13 +3,14 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.core.random_selection import selection
 from app.models import User
+from app.schemas import LaunchSession
 
 router = APIRouter(prefix="/launch", tags=["secret_santa"])
 
 
 @router.post("/")
-def launch_secret_santa(session: int, db: Session = Depends(get_db)):
-    users = db.query(User).filter(User.session == session).all()
+def launch_secret_santa(session: LaunchSession, db: Session = Depends(get_db)):
+    users = db.query(User).filter(User.session == session.session).all()
     user_ids = [user.id for user in users]
     results = selection(user_ids)
     for user_id, attributed_id in results.items():

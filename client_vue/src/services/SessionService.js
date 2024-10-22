@@ -35,6 +35,10 @@ async function joinSession(session_id, username) {
   const data = await response.json();
   console.log(data);
 
+  if (!response.ok) {
+    throw new Error(data.detail || "An unexpected error occurred");
+  }
+
   return {
     user_id: data.id,
   };

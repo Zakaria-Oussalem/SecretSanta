@@ -1,4 +1,9 @@
 <template>
+        <header v-if="isLoading" className="App-header">
+          <div className="title-box">
+          <h1>Loading ...</h1>
+          </div>
+        </header>
       <header className="App-header">
         <div className="title-box">
           <h1>SECRET SANTA</h1>
@@ -25,6 +30,7 @@
             Submit
           </button>
         </form>
+        <p v-if="error" className="error">{{ error }}</p>
       </header>
 </template>
 
@@ -36,19 +42,28 @@ import { joinSession } from "../services/SessionService.js";
 
 const router = useRouter();
 const username = ref("");
+const error = ref("");
 const session_id = ref("");
 const isLoading = ref(false);
 async function handleSubmit () {
   isLoading.value = true;
+  let user_id = ""; 
+  if (!username.value || !session_id.value) {
+    error.value = "Please enter a username and session ID";
+    isLoading.value = false;
+    return;
+  }
   try {
     console.log(username.value);
-    const { user_id } = await joinSession(session_id.value,username.value);
-    router.push(`/session/${session_id.value}/${user_id}`);
-  } catch (error) {
-    console.error(error);
+    user_id = await joinSession(session_id.value,username.value);
+  } catch (error_response) {
+    console.error(error_response);
+    error.value = error_response.message;
+    return;
   } finally {
     isLoading.value = false;
   }
+  router.push(`/session/${session_id.value}/${user_id}`);
 };
 </script>
 

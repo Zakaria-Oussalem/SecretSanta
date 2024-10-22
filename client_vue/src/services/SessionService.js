@@ -13,6 +13,10 @@ async function createSession(username, role) {
   const data = await response.json();
   console.log(data);
 
+  if (!response.ok) {
+    throw new Error(data.detail || "An unexpected error occurred");
+  }
+
   return {
     session_id: data.session,
     user_id: data.id,

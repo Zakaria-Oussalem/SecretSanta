@@ -18,6 +18,7 @@
             Submit
           </button>
         </form>
+        <p v-if="error" className="error">{{ error }}</p>
       </header>
 </template>
 
@@ -30,14 +31,20 @@ import { createSession } from "../services/SessionService.js";
 const router = useRouter();
 const username = ref("");
 const isLoading = ref(false);
+const error = ref("");
 async function handleSubmit () {
+  if (!username.value) {
+    error.value = "Please enter a username";
+    return;
+  }
   isLoading.value = true;
   try {
     console.log(username.value);
     const { session_id, user_id } = await createSession(username.value,"admin");
     router.push(`/session/${session_id}/${user_id}`);
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error(err);
+    error.value = err.message;
   } finally {
     isLoading.value = false;
   }

@@ -56,6 +56,7 @@ async function handleSubmit () {
   try {
     console.log(username.value);
     user_id = await joinSession(session_id.value,username.value);
+    console.log(user_id);
   } catch (error_response) {
     console.error(error_response);
     error.value = error_response.message;
@@ -63,7 +64,7 @@ async function handleSubmit () {
   } finally {
     isLoading.value = false;
   }
-  router.push(`/session/${session_id.value}/${user_id}`);
+  router.push(`/session/${session_id.value}/${user_id.user_id}`);
 };
 </script>
 

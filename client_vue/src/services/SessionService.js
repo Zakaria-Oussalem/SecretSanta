@@ -31,8 +31,8 @@ async function joinSession(session_id, username) {
       "Access-Control-Allow-Origin": "*",
     },
     body: JSON.stringify({
-      session_id,
-      username,
+      session_id: session_id,
+      username: username,
       role: "user",
     }),
   });
